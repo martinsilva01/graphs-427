@@ -5,9 +5,10 @@ parser = argparse.ArgumentParser(
         formatter_class=argparse.RawTextHelpFormatter
         )
 
-parser.add_argument("-i", "--input-file", help='Reads a graph from the given .gml file and uses it for all subsequent operations.')
-parser.add_argument("-c", "--create-random-graph", help='Generates a new Erdős–Rényi graph with n nodes and edge probability p=(c⋅ln(n)/n). Overrides --input. Nodes must be labeled with strings ("0", "1", ..., "n-1").')
-parser.add_argument("-m", "--multi_BFS", help='''Performs additional structural analyses on the graph, including:
+parser.add_argument("--input-file", help='Reads a graph from the given .gml file and uses it for all subsequent operations.')
+parser.add_argument("--create-random-graph", nargs=2, metavar=('n', 'c'), help='Generates a new Erdős–Rényi graph with n nodes and edge probability p=(c⋅ln(n)/n). Overrides --input. Nodes must be labeled with strings ("0", "1", ..., "n-1").')
+parser.add_argument("--multi_BFS", nargs='+', metavar=("a1"), help='Accepts one or more starting nodes and computes BFS trees from each, storing all shortest paths. Each BFS tree must be independently visualized and compared.')
+parser.add_argument("--analyze", action="store_true", help='''Performs additional structural analyses on the graph, including:
 
     Connected Components
     Counts how many distinct connected subgraphs exist.
@@ -26,7 +27,7 @@ parser.add_argument("-m", "--multi_BFS", help='''Performs additional structural 
 
     Average Shortest Path Length
     If the graph is connected, computes the average number of steps along the shortest paths for all pairs of nodes.''')
-parser.add_argument("-p", "--plot", 
+parser.add_argument("--plot", 
                     help='''Visualizes the graph with:
 
     Highlighted shortest paths from each BFS root node;
@@ -34,6 +35,7 @@ parser.add_argument("-p", "--plot",
     Distinct styling for isolated nodes;
     
     Optional visualization of individual connected components.''')
-parser.add_argument("-o", "--output-file", help='Saves the final graph, with all computed attributes (e.g., distances, parent nodes, component IDs), to the specified .gml file')
+parser.add_argument("--output-file", help='Saves the final graph, with all computed attributes (e.g., distances, parent nodes, component IDs), to the specified .gml file')
 
-parser.print_help()
+
+args = parser.parse_args()

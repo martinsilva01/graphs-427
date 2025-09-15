@@ -10,6 +10,7 @@ def validFileName(str):
         raise argparse.ArgumentTypeError('File name must end in .gml.')
     if re.search(r'[^A-Za-z\d_-]', file_name_array[0]):
         raise argparse.ArgumentTypeError('File name must not contain non-alphanumeric characters.')
+    return str 
 
 parser = argparse.ArgumentParser(description='Python application that handles Erdős–Rényi random graph generation, analysis, transformation, and visualization.', formatter_class=argparse.RawTextHelpFormatter)
 

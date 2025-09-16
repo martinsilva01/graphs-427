@@ -28,4 +28,4 @@ def plot(graph: nx.Graph):
     
     nx.draw(graph, with_labels=True, node_color=color_map)
     plt.legend(handles=patch_list)
-    plt.show()
+    plt.savefig("graph_plot" + str(random.randint(0,999999)) + ".png")

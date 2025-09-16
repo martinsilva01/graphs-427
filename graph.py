@@ -2,7 +2,7 @@ import argparse
 import networkx as nx
 from cli import analyze, get_parser
 from algorithms import multi_bfs, shortest_path
-from graph_io import add_bfs_attributes, output
+from graph_io import add_bfs_attributes, output, create_random_graph
 import matplotlib.pyplot as plt
 from visualization import plot
 
@@ -15,7 +15,7 @@ if args.input_file:
     G = nx.read_gml(args.input_file)
 
 elif args.create_random_graph:
-    print('add functionality')
+    G = create_random_graph(*args.create_random_graph)
 
 else:
     raise argparse.ArgumentTypeError('Input graph required from file or random graph.')

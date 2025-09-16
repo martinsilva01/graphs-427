@@ -1,6 +1,7 @@
 import argparse
 import networkx as nx
 import re
+from algorithms import connected_components, find_cycle, isolated_nodes, density, average_shortest_path_length
 
 def validFileName(str):
     file_name_array = str.split('.')
@@ -58,14 +59,28 @@ G = None
 
 if args.input_file:
     G = nx.read_gml(args.input_file)
-    print(G.nodes)
-    print(G.edges)
 
 elif args.create_random_graph:
     print('add functionality')
 
 else:
     raise argparse.ArgumentTypeError('Input graph required from file or random graph.')
+
+if args.analyze:
+    print("Connected Components:")
+    print(connected_components(G))
+
+    print("Cycle Detection:")
+    print(find_cycle(G))
+
+    print("Isolated Nodes: ", end='')
+    print(isolated_nodes(G))
+    print("Graph Density: ", end='')
+    print(density(G))
+    if nx.is_connected(G):
+        print("Average Shortest Path Length: ", end='')
+        print(average_shortest_path_length(G))
+
 
 
 

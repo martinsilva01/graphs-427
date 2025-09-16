@@ -1,7 +1,10 @@
 import argparse
 import networkx as nx
 import re
+import matplotlib.pyplot as plt
+from matplotlib.patches import Patch
 from algorithms import connected_components, find_cycle, isolated_nodes, density, average_shortest_path_length
+import random
 
 def validFileName(str):
     file_name_array = str.split('.')
@@ -81,6 +84,31 @@ if args.analyze:
         print("Average Shortest Path Length: ", end='')
         print(average_shortest_path_length(G))
 
+if args.plot:
+    isolated_list = isolated_nodes(G)
+    connected_list = connected_components(G)
+    patch_list = []
+    patch_list.append(Patch(facecolor="red", edgecolor='black', label = "Isolated Nodes"))
+    color_map = ["black" for _ in G.nodes]
+    for i, node in enumerate(G.nodes):
+        if node in isolated_list:
+            color_map[i] = "red"
+    
+    component_count = 1
+    for component in connected_list:
+        if len(component) < 2:
+            continue
+        color = "#{:06x}".format(random.randint(0xAAAAAA, 0xFFFFFF))
+        label = 'Component '+ str(component_count)
+        patch_list.append(Patch(facecolor=color, edgecolor='black', label=label))
+        for node in component:
+            idx = list(G.nodes).index(node) 
+            color_map[idx] = color
+        component_count += 1
+    
+    nx.draw(G, with_labels=True, node_color=color_map)
+    plt.legend(handles=patch_list)
+    plt.show()
 
 
 

@@ -3,8 +3,10 @@ import networkx as nx
 import re
 import matplotlib.pyplot as plt
 from matplotlib.patches import Patch
+
 from algorithms import connected_components, find_cycle, isolated_nodes, density, average_shortest_path_length
 import random
+import math
 
 def validFileName(str):
     file_name_array = str.split('.')
@@ -64,7 +66,10 @@ if args.input_file:
     G = nx.read_gml(args.input_file)
 
 elif args.create_random_graph:
-    print('add functionality')
+    n = int(args.create_random_graph[0])
+    c = float(args.create_random_graph[1])
+    p = c * math.log(n) / n
+    G = nx.erdos_renyi_graph(n, p)
 
 else:
     raise argparse.ArgumentTypeError('Input graph required from file or random graph.')
@@ -110,6 +115,20 @@ if args.plot:
     plt.legend(handles=patch_list)
     plt.show()
 
+if args.multi_BFS:
+    bfs_trees = []
+    figures = []
 
+    for index, starting_node in enumerate(args.multi_BFS):
+        if G.has_node(starting_node):
+            current_bfs = nx.bfs_tree(G, starting_node)
+            bfs_trees.append(current_bfs)
 
+            plt.figure(f"BST for node ID {starting_node}")
+            plt.title(f"BST for node ID {starting_node}")
+            pos = nx.kamada_kawai_layout(bfs_trees[index])
+            nx.draw(bfs_trees[index], pos, with_labels=True)
+            plt.show()
+        else:
+            raise ValueError("Invalid node ID inputted.")
 

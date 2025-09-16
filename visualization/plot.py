@@ -1,5 +1,6 @@
 import networkx as nx
 from algorithms import isolated_nodes, connected_components 
+import random
 import matplotlib.pyplot as plt
 from matplotlib.patches import Patch
 

@@ -2,8 +2,9 @@ import argparse
 import networkx as nx
 from cli import analyze, get_parser
 from algorithms import multi_bfs, shortest_path
-import random
+from graph_io import add_bfs_attributes, output
 import matplotlib.pyplot as plt
+from visualization import plot
 
 parser = get_parser()
 args = parser.parse_args()
@@ -26,15 +27,20 @@ if args.multi_BFS:
         for i, bfs_tuple in enumerate(bfs_list):
             graph, parent_dict = bfs_tuple
             plt.figure(i)
-            nx.draw(graph, with_labels=True)
-        plt.show()
-    
+            plot(graph)
+
+    if args.output_file:
+        add_bfs_attributes(G, bfs_list)
+        output(G, args.output_file)
+
 elif args.analyze:
     analyze(G)
 
     if args.plot:
         plot(G)
 
+    if args.output_file:
+        output(G, args.output_file)
 
 
 

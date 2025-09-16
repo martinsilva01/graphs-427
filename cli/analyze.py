@@ -15,5 +15,3 @@ def analyze(graph: nx.Graph):
     if nx.is_connected(graph):
         print("Average Shortest Path Length: ", end='')
         print(average_shortest_path_length(graph))
-
-

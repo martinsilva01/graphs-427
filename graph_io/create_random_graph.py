@@ -4,6 +4,14 @@ import math
 from itertools import combinations
 
 def create_random_graph(n: int, c: float):
+""" 
+Creates an Erdos-Reyni graph with edge probability 
+p = min(1.0, ( c * math.log(n) ) / n)
+
+Keyword arguments:
+n -- Number of nodes
+c -- Constant c
+"""
     n = int(n)
     c = float(c)
     p = min(1.0, ( c * math.log(n) ) / n)

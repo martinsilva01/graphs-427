@@ -5,6 +5,14 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import Patch
 
 def plot(graph: nx.Graph):
+""" 
+Plots a graph with NetworkX related information such as isolated nodes and connected components
+
+Keyword arguments:
+graph -- A NetworkX Graph object
+
+"""
+
     isolated_list = isolated_nodes(graph)
     connected_list = connected_components(graph)
     patch_list = []

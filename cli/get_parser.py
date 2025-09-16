@@ -2,6 +2,7 @@ import argparse
 import re
 
 def validFileName(str):
+    """Returns the filename only if it follows valid naming scheme."""
     file_name_array = str.split('.')
     if len(file_name_array) != 2:
         raise argparse.ArgumentTypeError('File name requires exactly one .gml extension.')
@@ -12,6 +13,7 @@ def validFileName(str):
     return str 
 
 def get_parser():
+    """ Returns a custom argparse parser made for graph.py """
     parser = argparse.ArgumentParser(description='Python application that handles Erdős–Rényi random graph generation, analysis, transformation, and visualization.', formatter_class=argparse.RawTextHelpFormatter)
     
     group_input = parser.add_mutually_exclusive_group(required=True)

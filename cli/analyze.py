@@ -2,6 +2,10 @@ import networkx as nx
 from algorithms import connected_components, find_cycle, isolated_nodes, density, average_shortest_path_length
 
 def analyze(graph: nx.Graph):
+    """ 
+    Prints various algorithm results to terminal. 
+    Only prints average shortest path length if graph is connected.
+    """
     print("Connected Components:")
     print(connected_components(graph))
 

@@ -1,12 +1,12 @@
 import networkx as nx
 
 def connected_components(graph: nx.Graph):
-""" 
-Returns a list of lists denoting connected components of a graph 
+    """
+    Returns a list of lists denoting connected components of a graph
 
-Keyword arguments:
-graph -- A NetworkX graph object
-""" 
+    Keyword arguments:
+    graph -- A NetworkX graph object
+    """
 
     components = []
     visited = set()

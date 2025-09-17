@@ -3,3 +3,4 @@ from .find_cycle import find_cycle
 from .isolated_nodes import isolated_nodes
 from .density import density
 from .average_shortest_path_length import average_shortest_path_length
+from .multi_bfs import multi_bfs, shortest_path

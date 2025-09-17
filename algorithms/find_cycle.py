@@ -1,6 +1,12 @@
 import networkx as nx
 
 def find_cycle(graph: nx.Graph):
+"""
+Returns the first cycle found inside a NetworkX graph.
+
+Keyword arguments:
+graph -- A NetworkX graph object
+"""
     visited = set()
     parent = {}
 

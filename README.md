@@ -3,11 +3,11 @@
 #### Martin Silva (#030854159), Zachary Padilla (#033497475)
 
 ## Usage Instructions
-- ``--plot`` outputs are stored in ``.png`` files.
-- When invoking ``--multi_BFS``, ``--plot`` must be included within the same command if you wish to plot the BFS trees. This is as users may want to view the default graph instead.
-- Invoking ``--multi_BFS`` on a previously-existing graph will modify the corresponding ``.gml`` file to include all shortest paths.
--   This behavior is also true of directly invoking ``--multi_BFS`` and ``--output`` together.
-- ``out_graph_file.gml`` is the default name for outputted graphs if one is not specified.
+* ``--plot`` outputs are stored in ``.png`` files.
+* When invoking ``--multi_BFS``, ``--plot`` must be included within the same command if you wish to plot the BFS trees. This is as users may want to view the default graph instead.
+* Invoking ``--multi_BFS`` on a previously-existing graph will modify the corresponding ``.gml`` file to include all shortest paths.
+  * This behavior is also true of directly invoking ``--multi_BFS`` and ``--output`` together.
+* ``out_graph_file.gml`` is the default name for outputted graphs if one is not specified.
 
 ## Description of Implementation
 - All instructions were followed as listed—interpretations were made where needed.

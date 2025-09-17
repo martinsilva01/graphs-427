@@ -11,7 +11,7 @@
 
 ## Description of Implementation
 - All instructions were followed as listed—interpretations were made where needed.
-- Images were originally represented in Pyplot windows, though this seemed system-dependent as it didn't work within certain IDEs. As such, they are saved as ``.png`` files.
+- Images were originally represented in Pyplot windows, though this seemed system-dependent as it did not work within certain IDEs. As such, they are saved as ``.png`` files.
 
 ## Examples of Commands and Outputs
 
